@@ -1,3 +1,3 @@
-# Simple UI for demostrating the refreshCookie cycle
+# Simple UI for demonstrating the fascinating "access-refreshCookie-cycle"
 
 A UI with simple inputs. CRUD operations, JWT & cookies
