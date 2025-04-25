@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
 import usePasswordToggle from '../utils/togglePassword'
 import { useNavigate, Link } from 'react-router-dom'
-// import ErrorOrSuccess from './ErrorOrSuccess'
+
 
 
 const Register = ({

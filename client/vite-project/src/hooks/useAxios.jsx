@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState, useEffect} from 'react'
+import { useState} from 'react'
 
 const useAxios = () => {
   const [token, setToken] = useState(null)

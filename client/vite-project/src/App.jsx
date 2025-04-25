@@ -1,7 +1,8 @@
 import Dashboard from './components/Dashboard'
 import Login from './components/Login'
 import Register from './components/Register'
-import { Routes, Route } from 'react-router-dom'
+
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import { Fragment, useEffect, useState } from 'react'
 
 import useAxios from './hooks/useAxios'
@@ -11,14 +12,17 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const { instance, setAuthToken, token } = useAxios()
   const [successMessage, setSuccessMessage] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
-  const [isEditing, setIsEditing] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
   // const navigate = useNavigate()
+
+  
+
+ 
 
   const isLoggedIn = async () => {
     try {
       const response = await instance.post('/auth/is_verified')
-
+      
       response.data ? setIsAuthenticated(true) : setIsAuthenticated(false)
     } catch (error) {
       setErrorMessage(error.response?.data?.message)
@@ -29,8 +33,8 @@ const App = () => {
     isLoggedIn()
   }, [])
 
-  console.log(isEditing)
-
+ 
+ 
   return (
     <Fragment>
       {/* <Router> */}
@@ -61,8 +65,7 @@ const App = () => {
                   successMessage={successMessage}
                   errorMessage={errorMessage}
                   setAuthToken={setAuthToken}
-                  isEditing={isEditing}
-                  setIsEditing={setIsEditing}
+                  
                 />
               )
             }
@@ -83,13 +86,13 @@ const App = () => {
                 />
               ) : (
                 <Login
-                // setIsAuthenticated={setIsAuthenticated}
-                // instance={instance}
-                // setAuthToken={setAuthToken}
-                // setSuccessMessage={setSuccessMessage}
-                // setErrorMessage={setErrorMessage}
-                // successMessage={successMessage}
-                // errorMessage={errorMessage}
+                  // setIsAuthenticated={setIsAuthenticated}
+                  // instance={instance}
+                  // setAuthToken={setAuthToken}
+                  // setSuccessMessage={setSuccessMessage}
+                  // setErrorMessage={setErrorMessage}
+                  // successMessage={successMessage}
+                  // errorMessage={errorMessage}
                 />
               )
             }
@@ -108,8 +111,7 @@ const App = () => {
                   successMessage={successMessage}
                   errorMessage={errorMessage}
                   setAuthToken={setAuthToken}
-                  isEditing={isEditing}
-                  setIsEditing={setIsEditing}
+                  
                 />
               ) : (
                 <Login />

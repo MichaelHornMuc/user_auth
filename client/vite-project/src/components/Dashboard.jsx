@@ -14,12 +14,16 @@ const Dashboard = ({
   setErrorMessage,
   setIsAuthenticated,
   isEditing,
-  setIsEditing
+  setIsEditing,
+  isRedirected,
+  setIsRedirected,
 }) => {
   const [user, setUser] = useState({})
   const [users, setUsers] = useState([])
   // const [isEditing, setIsEditing] = useState(false)
   const navigate = useNavigate()
+
+  console.log(isRedirected)
 
   const getData = useCallback(async () => {
     try {
@@ -27,6 +31,7 @@ const Dashboard = ({
 
       if (isVerified.data) {
         const response = await instance.get('/dashboard')
+
         setUser(response.data.user)
         if (response.data.user.is_admin === true) {
           setUsers(response.data.users)
@@ -71,7 +76,9 @@ const Dashboard = ({
     getData()
   }, [])
 
-  return isEditing ? (
+  return isRedirected ? (
+    <h1>isRedirected</h1>
+  ) : isEditing ? (
     <EditForm
       user={user}
       setUser={setUser}
@@ -83,7 +90,7 @@ const Dashboard = ({
       errorMessage={errorMessage}
     />
   ) : (
-    <Fragment>
+      <Fragment>
       {user && <h2 className='text-center'>Welcome {user.user_name}</h2>}
       <UserCard
         user={user}
@@ -111,8 +118,50 @@ const Dashboard = ({
           <Fragment>{errorMessage}</Fragment>
         )}
       </div>
-    </Fragment>
-  )
+    </Fragment>)
+
+  // return isEditing ? (
+  //   <EditForm
+  //     user={user}
+  //     setUser={setUser}
+  //     instance={instance}
+  //     setIsEditing={setIsEditing}
+  //     successMessage={successMessage}
+  //     setSuccessMessage={setSuccessMessage}
+  //     setErrorMessage={setErrorMessage}
+  //     errorMessage={errorMessage}
+  //   />
+  // ) : (
+  //   <Fragment>
+  //     {user && <h2 className='text-center'>Welcome {user.user_name}</h2>}
+  //     <UserCard
+  //       user={user}
+  //       setUser={setUser}
+  //       setUsers={setUsers}
+  //       users={users}
+  //       isEditing={isEditing}
+  //       instance={instance}
+  //       setIsEditing={setIsEditing}
+  //       setAuthToken={setAuthToken}
+  //     />
+  //     <br />
+  //     <div className='container'>
+  //       <button
+  //         type='button'
+  //         className='btn btn-secondary'
+  //         onClick={() => logOut()}>
+  //         LogOut
+  //       </button>
+  //     </div>
+  //     <div className='container'>
+  //       {successMessage ? (
+  //         <Fragment>{successMessage}</Fragment>
+  //       ) : (
+  //         <Fragment>{errorMessage}</Fragment>
+  //       )}
+  //     </div>
+  //   </Fragment>
+  // )
 }
 
 export default Dashboard
