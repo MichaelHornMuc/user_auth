@@ -1,3 +1,2 @@
-# Simple UI for demonstrating the fascinating "access-refreshCookie-cycle"
 
-A UI with simple inputs. CRUD operations, JWT & cookies
+In this branch i tried to implement a email sending feature The emails are sent by registration and login. In addition i want to set up a Multi-Factor-Authentication but i failed because of basic mistakes i made in my routing so my code get's really messy. 
