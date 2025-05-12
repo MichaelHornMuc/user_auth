@@ -41,16 +41,16 @@ const Register = ({
         setInputs(response)
       }
       setErrorMessage('')
-      setSuccessMessage(response.data.message)
+      // setSuccessMessage(response.data.message)
       setAuthToken(response.data.accessToken)
       setInputs({})
       setTimeout(() => {
-        setSuccessMessage('')
-        navigate('/login')
+        // setSuccessMessage('')
+        // navigate('/login')
       }, 3000)
     } catch (error) {
       console.log(error)
-      setErrorMessage(error.response.data.message)
+      // setErrorMessage(error.response.data.message)
       // setInputs({})
     }
   }

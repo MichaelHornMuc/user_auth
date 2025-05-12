@@ -3,6 +3,7 @@ import cors from 'cors'
 import authenticationRouter from './routes/jwtAuth.js'
 import dashBoardRouter from './routes/dashboard.js'
 import cookieParser from 'cookie-parser'
+import 'dotenv/config.js'
 
 
 // Express server configuration

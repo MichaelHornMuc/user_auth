@@ -32,8 +32,8 @@ const Login = ({
         // setErrorMessage(error.response.data.message)
       } 
     } catch (error) {
-      // console.log(error)
-      setErrorMessage(error.response.data.message)
+      console.log(error)
+      // setErrorMessage(error.response.data.message)
     }
   }, [instance, setIsAuthenticated, setErrorMessage, setSuccessMessage]
 )
@@ -55,17 +55,18 @@ const Login = ({
     e.preventDefault()
     try {
       const response = await instance.post('/auth/login', loginData)
+      console.log(response)
       if (response.data) {
         setAuthToken(response.data.accessToken)
-        setSuccessMessage(response.data.message)
+        // setSuccessMessage(response.data.message)
         setTimeout(() => {
-          navigate('/dashboard')
+          navigate('/login/passkey')
           setIsAuthenticated(true)
         }, 3000)
       }
     } catch (error) {
       console.log(error)
-      setErrorMessage(error.response?.data?.message)
+      // setErrorMessage(error.response?.data?.message)
     }
   }
 
@@ -113,15 +114,15 @@ const Login = ({
         <button type='submit' className='btn btn-success btn-block'>
           Login
         </button>
+      
       </form>
-      {/* <button onClick={isLoggedIn}>Click me</button> */}
+     
       <Link to='/register'>Register an account</Link>
       {successMessage ? (
         <Fragment>{successMessage}</Fragment>
       ) : (
         <Fragment>{errorMessage}</Fragment>
-      )}
-      {/* <ErrorOrSuccess successMessage={successMessage} errorMessage={errorMessage}/> */}
+      )}s
     </Fragment>
   )
 }

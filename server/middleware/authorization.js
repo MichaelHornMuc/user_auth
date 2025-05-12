@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken'
+import 'dotenv/config'
 
 // Middleware function to check if the user is authorized by checking the access token and refresh token
 const authorization = (req, res, next) => {
